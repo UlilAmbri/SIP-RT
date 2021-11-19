@@ -2,6 +2,19 @@
 
 @section('container')
 <form action="/lapor" method="POST" enctype="multi-part">
+    @if (session()->has('success'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{ session('success') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                @endif
+
+                @if (session()->has('insertError'))
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    {{ session('insertError') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                @endif
     @csrf
     <div class="col-md-15 col-12">
         <div class="card">
@@ -69,12 +82,12 @@
     
                                 <div class="col-12">
                                 </div>
-                                    {{-- <div class="input-group mb-3">
+                                    <div class="input-group mb-3">
                                         <label for="inputGroupFile01">File KTP</label>
                                         <div class="input-group mb-3">
                                         <label class="input-group-text" for="inputGroupFile01"><i
                                                                     class="bi bi-upload"></i></label>
-                                        <input type="file" class="form-control @error('name') is-invalid @enderror" id="ktp" name="ktp">
+                                        <input type="file" class="form-control @error('name') is-invalid @enderror" id="file_ktp" name="file_ktp">
                                             </div>
                                             @error('ktp')
                                             <div class="invalid-feedback">
@@ -91,7 +104,7 @@
                                         <div class="input-group mb-3">
                                         <label class="input-group-text" for="inputGroupFile02"><i
                                                                     class="bi bi-upload"></i></label>
-                                        <input type="file" class="form-control @error('name') is-invalid @enderror" id="kk" name="kk">
+                                        <input type="file" class="form-control @error('name') is-invalid @enderror" id="file_kk" name="file_kk">
                                             </div>
                                             @error('kk')
                                             <div class="invalid-feedback">
@@ -107,7 +120,7 @@
                                         <div class="input-group mb-3">
                                         <label class="input-group-text" for="inputGroupFile03"><i
                                                                     class="bi bi-upload"></i></label>
-                                        <input type="file" class="form-control @error('name') is-invalid @enderror" id="ktp" name="buku_nikah">
+                                        <input type="file" class="form-control @error('name') is-invalid @enderror" id="buku_nikah" name="buku_nikah">
                                             </div>
                                             @error('buku_nikah')
                                             <div class="invalid-feedback">
@@ -115,7 +128,7 @@
                                             </div>
                                             @enderror
                                         </div>
-                                    </div> --}}
+                                    </div>
                         
                                 <div class="col-12 d-flex justify-content-end">
                                     <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>

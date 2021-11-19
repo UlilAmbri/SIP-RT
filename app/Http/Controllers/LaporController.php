@@ -16,7 +16,8 @@ class LaporController extends Controller
     {
         $data = $request->except(['_token']);
         Lapor::insert($data);
-        
+
         return redirect('/lapor')->with('success', 'Data telah disimpan.');
+        return back()->with('insertError', 'Data gagal disimpan!');
     }
 }

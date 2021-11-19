@@ -18,6 +18,9 @@ class CreateLaporTable extends Migration
             $table->string('name');
             $table->longText('alamat');
             $table->string('no_hp');
+            $table->string('file_ktp');
+            $table->string('file_kk');
+            $table->string('buku_nikah');
             $table->softDeletes();
             $table->timestamps();
         });
