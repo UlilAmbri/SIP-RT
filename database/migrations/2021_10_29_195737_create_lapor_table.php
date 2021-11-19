@@ -14,13 +14,11 @@ class CreateLaporTable extends Migration
     public function up()
     {
         Schema::create('lapor', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->string('name');
-            $table->text('alamat');
-            $table->integer('no_hp');
-            $table->string('ktp');
-            $table->string('kk');
-            $table->string('buku_nikah');
+            $table->longText('alamat');
+            $table->string('no_hp');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

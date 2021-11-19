@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.main')
 
 @section('container')
-<form action="/lapor" method="post" id="wajibLapor">
+<form action="/lapor" method="POST" enctype="multi-part">
     @csrf
     <div class="col-md-15 col-12">
         <div class="card">
@@ -68,7 +68,8 @@
                                 </div>
     
                                 <div class="col-12">
-                                    <div class="input-group mb-3">
+                                </div>
+                                    {{-- <div class="input-group mb-3">
                                         <label for="inputGroupFile01">File KTP</label>
                                         <div class="input-group mb-3">
                                         <label class="input-group-text" for="inputGroupFile01"><i
@@ -84,6 +85,7 @@
                                     </div>
     
                             <div class="col-12">
+                            </div>
                                     <div class="input-group mb-3">
                                         <label for="inputGroupFile02">File KK</label>
                                         <div class="input-group mb-3">
@@ -113,7 +115,7 @@
                                             </div>
                                             @enderror
                                         </div>
-                                    </div>
+                                    </div> --}}
                         
                                 <div class="col-12 d-flex justify-content-end">
                                     <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
