@@ -30,7 +30,15 @@
                         </a>
                     </li>
 
-                    <li class="sidebar-title">Jenis Layanan</li>
+                    <li
+                        class="sidebar-item {{ Request::is('layanan') ? 'active' : ''}} ">
+                        <a href="/layanan" class='sidebar-link'>
+                            <i class="fas fa-file-contract"></i>
+                            <span>Layanan</span>
+                        </a>
+                    </li>
+
+                    {{-- <li class="sidebar-title">Jenis Layanan</li>
 
                     <li
                         class="sidebar-item  has-sub ">
@@ -82,7 +90,7 @@
                             <i class="far fa-envelope"></i>
                             <span>Surat Pernyataan Usaha</span>
                         </a>
-                    </li>
+                    </li> --}}
 
                     <li class="sidebar-title">Account</li>
 

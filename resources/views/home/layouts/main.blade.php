@@ -11,6 +11,8 @@
         <!-- Google fonts-->
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
         <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="../assets/css/styles.css" rel="stylesheet" />
     </head>
@@ -260,5 +262,15 @@
         <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+        <script src="assets/vendors/jquery/jquery.min.js"></script>
+        <script src="assets/vendors/jquery-datatables/jquery.dataTables.min.js"></script>
+        <script src="assets/vendors/jquery-datatables/custom.jquery.dataTables.bootstrap5.min.js"></script>
+        <script src="assets/vendors/fontawesome/all.min.js"></script>
+        <script>
+            // Jquery Datatable
+            let jquery_datatable = $("#table1").DataTable()
+        </script>
+
+            <script src="assets/js/mazer.js"></script>
     </body>
 </html>
