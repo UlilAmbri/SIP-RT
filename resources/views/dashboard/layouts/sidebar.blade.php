@@ -37,61 +37,7 @@
                             <span>Layanan</span>
                         </a>
                     </li>
-
-                    {{-- <li class="sidebar-title">Jenis Layanan</li>
-
-                    <li
-                        class="sidebar-item  has-sub ">
-                        <a href="#" class='sidebar-link'>
-                            <i class="far fa-envelope"></i>
-                            <span>Surat Keterangan</span>
-                        </a>
-                        <ul class="submenu ">
-                            <li class="submenu-item has-sub">
-                                <a href="#">Surat Keterangan</a>
-                            </li>
-                            <li class="submenu-item ">
-                                <a href="#">Surat Keterangan Tidak Mampu</a>
-                            </li>
-                            <li class="submenu-item ">
-                                <a href="#">Surat Keterangan Pindah</a>
-                            </li>
-                            <li class="submenu-item ">
-                                <a href="#">Surat Keterangan Mati</a>
-                            </li>
-                            <li class="submenu-item ">
-                                <a href="#">Surat Keterangan Belum menikah </a>
-                            </li>
-                            <li class="submenu-item ">
-                                <a href="#">Surat Keterangan Tidak Memiliki Rumah </a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li
-                        class="sidebar-item  ">
-                        <a href="#" class='sidebar-link'>
-                            <i class="far fa-envelope"></i>
-                            <span>Surat Domisili</span>
-                        </a>
-                    </li>
-
-                    <li
-                        class="sidebar-item  ">
-                        <a href="#" class='sidebar-link'>
-                            <i class="far fa-envelope"></i>
-                            <span>Surat Kuasa Waris</span>
-                        </a>
-                    </li>
-
-                    <li
-                        class="sidebar-item  ">
-                        <a href="#" class='sidebar-link'>
-                            <i class="far fa-envelope"></i>
-                            <span>Surat Pernyataan Usaha</span>
-                        </a>
-                    </li> --}}
-
+                    
                     <li class="sidebar-title">Account</li>
 
                     <li

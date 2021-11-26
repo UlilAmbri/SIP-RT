@@ -16,7 +16,7 @@
         <div class="card">
             <div class="card-header">
                 <a href="/forms" class='create-layanan'>
-                <button type="submit" class="btn btn-primary me-1 mb-1">Buat Layanan</button>
+                <button type="submit" class="btn btn-primary me-1 mb-1">+ Buat Layanan Baru</button>
             </div>
             <div class="card-body">
                 <table class="table" id="table1">

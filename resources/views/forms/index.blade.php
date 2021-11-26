@@ -53,7 +53,7 @@
                     </div>
                     <div class="col-12 d-flex justify-content-end">
                         <a href="#" class='create-layanan'>
-                        <button type="submit" class="btn btn-primary me-1 mb-1">Next</button>
+                        <button type="submit" class="btn btn-primary me-1 mb-1">Buat Layanan</button>
                         <a href="/layanan" class='create-layanan'>
                         <button type="submit"
                             class="btn btn-light-secondary me-1 mb-1">Back</button>

@@ -7,6 +7,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SignUpController;
 use App\Http\Controllers\LayananController;
 use App\Http\Controllers\FormsController;
+use App\Http\Controllers\LoginAdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,26 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
     return view('dashboard', []);
+});
+
+Route::get('/content', function () {
+    return view('dashboardadmin', []);
+});
+
+Route::group([
+    'prefix'=>config('admin.prefix'),
+    'namespace'=>'App\\Http\\Controllers',
+],function () {
+
+    Route::get('/loginadmin','LoginAdminController@formLogin')->name('admin.login');
+    Route::post('/loginadmin','LoginAdminController@login');
+
+    Route::middleware(['auth:admin'])->group(function () {
+        Route::post('logout','LoginAdminController@logout')->name('admin.logout');
+        Route::view('/','dashboardadmin')->name('dashboardadmin');
+        Route::view('/post','data-post')->name('post')->middleware('can:role,"admin","editor"');
+        Route::view('/admin','data-admin')->name('admin')->middleware('can:role,"admin"');
+    });
 });
 
 Route::get('/login', [LoginController::class, 'index']);//->middleware('guest')

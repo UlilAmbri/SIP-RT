@@ -1,68 +1,59 @@
-<header class='mb-3'>
-    <nav class="navbar navbar-expand navbar-light ">
-        <div class="container-fluid">
-            <a href="#" class="burger-btn d-block">
-                <i class="bi bi-justify fs-3"></i>
-            </a>
+<!-- Topbar -->
+<nav class="mb-4 bg-white shadow navbar navbar-expand navbar-light topbar static-top">
+    <!-- Topbar Navbar -->
+    <ul class="ml-auto navbar-nav">
+        <div class="topbar-divider d-none d-sm-block"></div>
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item dropdown me-1">
-                        <a class="nav-link active dropdown-toggle" href="#" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            <i class='bi bi-envelope bi-sub fs-4 text-gray-600'></i>
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
-                            <li>
-                                <h6 class="dropdown-header">Mail</h6>
-                            </li>
-                            <li><a class="dropdown-item" href="#">No new mail</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown me-3">
-                        <a class="nav-link active dropdown-toggle" href="#" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            <i class='bi bi-bell bi-sub fs-4 text-gray-600'></i>
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
-                            <li>
-                                <h6 class="dropdown-header">Notifications</h6>
-                            </li>
-                            <li><a class="dropdown-item">No notification available</a></li>
-                        </ul>
-                    </li>
-                </ul>
-                <div class="dropdown">
-                    <a href="#" data-bs-toggle="dropdown" aria-expanded="false">
-                        <div class="user-menu d-flex">
-                            <div class="user-name text-end me-3">
-                                <h6 class="mb-0 text-gray-600">Aulia Cenyo</h6>
-                                <p class="mb-0 text-sm text-gray-600">User</p>
-                            </div>
-                            <div class="user-img d-flex align-items-center">
-                                <div class="avatar avatar-md">
-                                    <img src="assets/images/faces/9.jpeg">
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton" style="min-width: 11rem;">
-                        <li>
-                            <h6 class="dropdown-header">Hello, Aulia Cenyo!</h6>
-                        </li>
-                        <li><a class="dropdown-item" href="#"><i class="icon-mid bi bi-person me-2"></i> My Profile</a></li>
-                        <li><a class="dropdown-item" href="#"><i class="icon-mid bi bi-gear me-2"></i>
-                                Settings</a></li>
-                        <li><a class="dropdown-item" href="#"><i
-                                    class="icon-mid bi bi-box-arrow-left me-2"></i> Logout</a></li>
-                    </ul>
+        <!-- Nav Item - User Information -->
+        <li class="nav-item dropdown no-arrow">
+            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="mr-2 text-primary d-none d-lg-inline small">Nama Admin</span>
+                <div class="img-profile rounded-circle text-primary">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person-check-fill" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M15.854 5.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L12.5 7.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
+                        <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                    </svg>
+                </div>
+            </a>
+            <!-- Dropdown - User Information -->
+            <div class="shadow dropdown-menu dropdown-menu-right animated--grow-in"
+                aria-labelledby="userDropdown">
+                
+                <a class="dropdown-item" href="{{ route('admin.logout') }}" data-toggle="modal" data-target="#logoutModal">
+                    <i class="mr-2 text-danger fas fa-sign-out-alt fa-sm fa-fw"></i>
+                    Logout
+                </a>
+                <form action="{{ route('admin.logout') }}" id="logout-form" method="post">
+                    @csrf
+                </form>
+            </div>
+            <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                        <a class="btn btn-primary" href="{{ route('admin.logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                        <form action="{{ route('admin.logout') }}" id="logout-form" method="post">
+                            @csrf
+                        </form>
+    
                 </div>
             </div>
         </div>
-    </nav>
-</header>
+    </div>
+
+        </li>
+
+    </ul>
+
+</nav>
+<!-- End of Topbar -->
