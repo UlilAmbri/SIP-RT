@@ -4,23 +4,20 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Layanan;
-class FormsController extends Controller
-{
-    function show()
-    {
-        $data = Layanan::all();
-        return view('layanan', ['lapors'=>$data]);
-    }
 
-    public function index()
+class FormController extends Controller
+{
+    public function create()
     {
-        return view('forms.index', []);
+        return view('form.create', []);
     }
 
     public function store(Request $request)
     {
-        $name = "Aulia Cenyo";
-        $layanan = "Surat Keterangan";
+        // $data = $request->except(['_token']);
+        // Layanan::insert($data);
+        $name = "Ulil Ambri";
+        $layanan = "Surat Keterangan Mati";
         $data=array('name'=>$name,"layanan"=>$layanan);
         Layanan::insert($data);
 

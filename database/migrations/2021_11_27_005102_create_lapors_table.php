@@ -15,6 +15,8 @@ class CreateLaporsTable extends Migration
     {
         Schema::create('lapors', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

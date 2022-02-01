@@ -15,6 +15,10 @@
     <link rel="stylesheet" href="../assets/css/app.css">
     <link rel="shortcut icon" href="../assets/images/favicon.svg" type="image/x-icon">
 
+    <link rel="stylesheet" href="../assets/vendors/toastify/toastify.css">
+    <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet">
+    <link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css" rel="stylesheet">
+
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
 
     <!-- <link rel="stylesheet" href="assets/vendors/jquery-datatables/jquery.dataTables.min.css"> -->
@@ -75,13 +79,100 @@
     <script src="../assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
     <script src="../assets/js/bootstrap.bundle.min.js"></script>
 
+    <!-- filepond validation -->
+    <script src="https://unpkg.com/filepond-plugin-file-validate-size/dist/filepond-plugin-file-validate-size.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-file-validate-type/dist/filepond-plugin-file-validate-type.js"></script>
+
+    <!-- toastify -->
+    <script src="assets/vendors/toastify/toastify.js"></script>
+
+    <!-- filepond -->
+    <script src="https://unpkg.com/filepond/dist/filepond.js"></script>
+    <script>
+    //     // register desired plugins...
+    //     FilePond.registerPlugin(
+    //     // validates the size of the file...
+    //     FilePondPluginFileValidateSize,
+    //     // validates the file type...
+    //     FilePondPluginFileValidateType,
+
+    //     // calculates & dds cropping info based on the input image dimensions and the set crop ratio...
+    //     FilePondPluginImageCrop,
+    //     // preview the image file type...
+    //     FilePondPluginImagePreview,
+    //     // filter the image file
+    //     FilePondPluginImageFilter,
+    //     // corrects mobile image orientation...
+    //     FilePondPluginImageExifOrientation,
+    //     // calculates & adds resize information...
+    //     FilePondPluginImageResize,
+    // );
+
+    // Filepond: ImgBB with server property
+    FilePond.create(document.querySelector('.imgbb-filepond'), {
+        allowImagePreview: false,
+        server: {
+            process: (fieldName, file, metadata, load, error, progress, abort) => {
+                // We ignore the metadata property and only send the file
+
+                const formData = new FormData();
+                formData.append(fieldName, file, file.name);
+
+                const request = new XMLHttpRequest();
+                // you can change it by your client api key
+                request.open('POST', 'https://api.imgbb.com/1/upload?key=762894e2014f83c023b233b2f10395e2');
+
+                request.upload.onprogress = (e) => {
+                    progress(e.lengthComputable, e.loaded, e.total);
+                };
+
+                request.onload = function () {
+                    if (request.status >= 200 && request.status < 300) {
+                        load(request.responseText);
+                    }
+                    else {
+                        error('oh no');
+                    }
+                };
+
+                request.onreadystatechange = function () {
+                    if (this.readyState == 4) {
+                        if (this.status == 200) {
+                            let response = JSON.parse(this.responseText);
+
+                            Toastify({
+                                text: "Success uploading to imgbb! see console f12",
+                                duration: 3000,
+                                close: true,
+                                gravity: "bottom",
+                                position: "right",
+                                backgroundColor: "#4fbe87",
+                            }).showToast();
+
+                            console.log(response);
+                        } else {
+                            Toastify({
+                                text: "Failed uploading to imgbb! see console f12",
+                                duration: 3000,
+                                close: true,
+                                gravity: "bottom",
+                                position: "right",
+                                backgroundColor: "#ff0000",
+                            }).showToast();
+
+                            console.log("Error", this.statusText);
+                        }
+                    }
+                };
+
+                request.send(formData);
+            }
+        }
+    });
+</script>
             </div>
         </div>
     </div>
-    <script src="../assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-    <script src="../assets/js/bootstrap.bundle.min.js"></script>
-    
-    <script src="../assets/js/mazer.js"></script>
 </body>
 
 </html>

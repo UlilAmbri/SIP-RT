@@ -7,7 +7,9 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SignUpController;
 use App\Http\Controllers\LayananController;
 use App\Http\Controllers\FormsController;
+use App\Http\Controllers\FormController;
 use App\Http\Controllers\LoginAdminController;
+use App\Http\Controllers\DataWargaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,10 +30,12 @@ Route::get('/dashboard', function () {
     return view('dashboard', []);
 });
 
-Route::get('/content', function () {
+Route::get('/dashboardadmin', function () {
     return view('dashboardadmin', []);
 });
 
+
+Route::get('/data', [DataWargaController::class, 'show']);
 Route::group([
     'prefix'=>config('admin.prefix'),
     'namespace'=>'App\\Http\\Controllers',
@@ -43,6 +47,7 @@ Route::group([
     Route::middleware(['auth:admin'])->group(function () {
         Route::post('logout','LoginAdminController@logout')->name('admin.logout');
         Route::view('/','dashboardadmin')->name('dashboardadmin');
+        Route::view('/','data')->name('data');
         Route::view('/post','data-post')->name('post')->middleware('can:role,"admin","editor"');
         Route::view('/admin','data-admin')->name('admin')->middleware('can:role,"admin"');
     });
@@ -63,3 +68,8 @@ Route::get('/lapor', [LaporController::class, 'create']);
 Route::post('/lapor', [LaporController::class, 'store']);
 
 Route::get('/forms', [FormsController::class, 'index']);
+Route::get('/layanans', [FormsController::class, 'show']);
+Route::post('/forms', [FormsController::class, 'store']);
+
+Route::get('/form', [FormController::class, 'create']);
+Route::post('/form', [FormController::class, 'store']);
